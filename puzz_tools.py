@@ -4,16 +4,16 @@ import keypirinha as kp
 import keypirinha_util as kpu
 
 _SORTS = {
-    'by alphabet': lambda x: '\n'.join(sorted(x.split('\n'))),
+    'alphabetical': lambda x: '\n'.join(sorted(x.split('\n'))),
     'by length': lambda x: '\n'.join(sorted(x.split('\n'), key=len)),
     'reverse': lambda x: '\n'.join(reversed(x.split('\n'))),
 }
 
 _NUTRIMATICS = {
-    'From ANSWERIZE': lambda x: x.lower().replace('?', 'A'),
-    'Add A* between': lambda x: 'A*' + 'A*'.join(x) + 'A*',
-    'Add ?': lambda x: ''.join(f'{c}?' for c in x),
-    'Enumeration': lambda x: ' '.join(f'A{{{n}}}' for n in re.findall('\d+', x)),
+    'from ANSWERIZE': lambda x: x.lower().replace('?', 'A'),
+    'add A* between': lambda x: 'A*' + 'A*'.join(x) + 'A*',
+    'add ?': lambda x: ''.join(f'{c}?' for c in x),
+    'from enumeration': lambda x: ' '.join(f'A{{{n}}}' for n in re.findall('\d+', x)),
 }
 
 _TRANSFORMS = {
@@ -21,9 +21,9 @@ _TRANSFORMS = {
     'length': len,
     'lowercase': str.lower,
     'uppercase': str.upper,
-    'sort': _SORTS,
     'reverse': lambda x: x[::-1],
     'answerize': lambda s: re.sub('[^A-Z0-9]', '', s.upper()),
+    'sort': _SORTS,
     'nutrimatic': _NUTRIMATICS,
 }
 
