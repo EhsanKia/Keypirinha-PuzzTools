@@ -22,6 +22,8 @@ This plugin adds a variety of text transforms, which are applied to the text in 
   - Alphabetical — Sorts lines alphabetically
   - By length — Sorts lines by length
   - Reverse — Reverses the order of the lines
+- Transpose — Transposes the input, taking characters as columns and lines as rows.
+  If a tab is found in the input, it'll use that for columns instead.
 - Uppercase — converts input to uppercase
 
 The transform is automatically applied to the contents of your clipboard when selected.
@@ -42,3 +44,5 @@ Optionally, you can pass a custom input to the transform by pressing TAB on the 
 ## Changelog
 
 - 1.0: Initial release
+- 1.1: Added transpose transform
+- 1.2: Allow user to pass custom input to transforms

@@ -3,6 +3,13 @@ import re
 import keypirinha as kp
 import keypirinha_util as kpu
 
+
+def transpose(data: str) -> str:
+    has_tab = '\t' in data
+    new_line = '\r\n' if '\r\n' in data else '\n'
+    flipped = zip(*[l.split('\t') if has_tab else l for l in data.split(new_line)])
+    return new_line.join(('\t' if has_tab else '').join(line) for line in flipped)
+
 _SORTS = {
     'alphabetical': lambda x: '\n'.join(sorted(x.split('\n'))),
     'by length': lambda x: '\n'.join(sorted(x.split('\n'), key=len)),
@@ -24,7 +31,7 @@ _TRANSFORMS = {
     'nutrimatic': _NUTRIMATICS,
     'reverse': lambda x: x[::-1],
     'sort': _SORTS,
-    'transpose': lambda x: '\n'.join(''.join(line) for line in zip(*x.split('\n'))),
+    'transpose': transpose,
     'uppercase': str.upper,
 }
 
