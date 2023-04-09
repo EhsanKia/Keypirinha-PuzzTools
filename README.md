@@ -26,6 +26,8 @@ This plugin adds a variety of text transforms, which are applied to the text in 
 
 The transform is automatically applied to the contents of your clipboard when selected.
 
+Optionally, you can pass a custom input to the transform by pressing TAB on the item.
+
 ## Installation
 
 ### Manual
