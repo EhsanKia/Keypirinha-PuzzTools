@@ -18,13 +18,14 @@ _NUTRIMATICS = {
 
 _TRANSFORMS = {
     'alphabet': lambda _: 'abcdefghijklmnopqrstuvwxyz',
+    'answerize': lambda s: re.sub('[^A-Z0-9]', '', s.upper()),
     'length': len,
     'lowercase': str.lower,
-    'uppercase': str.upper,
-    'reverse': lambda x: x[::-1],
-    'answerize': lambda s: re.sub('[^A-Z0-9]', '', s.upper()),
-    'sort': _SORTS,
     'nutrimatic': _NUTRIMATICS,
+    'reverse': lambda x: x[::-1],
+    'sort': _SORTS,
+    'transpose': lambda x: '\n'.join(''.join(line) for line in zip(*x.split('\n'))),
+    'uppercase': str.upper,
 }
 
 
