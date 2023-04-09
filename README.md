@@ -7,7 +7,7 @@ This is Keypirinha-PuzzTools, a plugin for the [Keypirinha](http://keypirinha.co
 
 This plugin adds a variety of text transforms, which are applied to the text in your clipboard.
 
-Transforms:
+### Transforms:
 - Alphabet — returns the alphabet in one line
 - Length — returns the length of the input
 - Lowercase — converts input to lowercase
@@ -24,6 +24,7 @@ Transforms:
 	- Add ? — adds ? after every character
 	- From enumeration — converts an enumeration to a nutrimatic query
 
+The transform is automatically applied to the contents of your clipboard when selected.
 
 ## Installation
 
