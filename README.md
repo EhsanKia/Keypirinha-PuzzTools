@@ -9,20 +9,20 @@ This plugin adds a variety of text transforms, which are applied to the text in 
 ### Transforms
 
 - Alphabet — returns the alphabet in one line
+- Answerize — Returns a canonicalized answer string
 - Length — returns the length of the input
 - Lowercase — converts input to lowercase
-- Uppercase — converts input to uppercase
-- Reverse — Reverses the string
-- Answerize — Returns a canonicalized answer string
-- Sort lines
-  - Alphabetical — Sorts lines alphabetically
-  - By length — Sorts lines by length
-  - Reverse — Reverses the order of the lines
 - [Nutrimatic](https://nutrimatic.org/)
   - From ANSWERIZER — converts uppercase answer with ? to a nutrimatic query
   - Add A\* between — add's A\* before, after and between each character
   - Add ? — adds ? after every character
   - From enumeration — converts an enumeration to a nutrimatic query
+- Reverse — Reverses the string
+- Sort lines
+  - Alphabetical — Sorts lines alphabetically
+  - By length — Sorts lines by length
+  - Reverse — Reverses the order of the lines
+- Uppercase — converts input to uppercase
 
 The transform is automatically applied to the contents of your clipboard when selected.
 
