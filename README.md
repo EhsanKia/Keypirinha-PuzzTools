@@ -10,6 +10,7 @@ This plugin adds a variety of text transforms, which are applied to the text in 
 
 - Alphabet — returns the alphabet in one line
 - Answerize — Returns a canonicalized answer string
+- Kebab case — Converts input into kebab-case
 - Length — returns the length of the input
 - Lowercase — converts input to lowercase
 - [Nutrimatic](https://nutrimatic.org/)
@@ -18,6 +19,8 @@ This plugin adds a variety of text transforms, which are applied to the text in 
   - Add ? — adds ? after every character
   - From enumeration — converts an enumeration to a nutrimatic query
 - Reverse — Reverses the string
+- Rotate — Rotates a 2D grid of data 90 degrees clockwise
+- Snake case — Converts input into snake_case
 - Sort lines
   - Alphabetical — Sorts lines alphabetically
   - By length — Sorts lines by length
