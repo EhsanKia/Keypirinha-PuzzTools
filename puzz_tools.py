@@ -1,39 +1,6 @@
-import re
-
+from . import transforms
 import keypirinha as kp
 import keypirinha_util as kpu
-
-
-def transpose(data: str) -> str:
-    has_tab = '\t' in data
-    new_line = '\r\n' if '\r\n' in data else '\n'
-    flipped = zip(*[l.split('\t') if has_tab else l for l in data.split(new_line)])
-    return new_line.join(('\t' if has_tab else '').join(line) for line in flipped)
-
-_SORTS = {
-    'alphabetical': lambda x: '\n'.join(sorted(x.split('\n'))),
-    'by length': lambda x: '\n'.join(sorted(x.split('\n'), key=len)),
-    'reverse': lambda x: '\n'.join(reversed(x.split('\n'))),
-}
-
-_NUTRIMATICS = {
-    'from ANSWERIZE': lambda x: x.lower().replace('?', 'A'),
-    'add A* between': lambda x: 'A*' + 'A*'.join(x) + 'A*',
-    'add ?': lambda x: ''.join(f'{c}?' for c in x),
-    'from enumeration': lambda x: ' '.join(f'A{{{n}}}' for n in re.findall('\d+', x)),
-}
-
-_TRANSFORMS = {
-    'alphabet': lambda _: 'abcdefghijklmnopqrstuvwxyz',
-    'answerize': lambda s: re.sub('[^A-Z0-9]', '', s.upper()),
-    'length': len,
-    'lowercase': str.lower,
-    'nutrimatic': _NUTRIMATICS,
-    'reverse': lambda x: x[::-1],
-    'sort': _SORTS,
-    'transpose': transpose,
-    'uppercase': str.upper,
-}
 
 
 class PuzzTools(kp.Plugin):
@@ -46,10 +13,10 @@ class PuzzTools(kp.Plugin):
         catalog = list(self._build_catalog())
         self.set_catalog(catalog)
 
-    def on_execute(self, item, action):
+    def on_execute(self, item, unused_action):
         input_data = item.raw_args() or kpu.get_clipboard()
         transform_name, _, subtransform_name = item.target().partition('.')
-        transform = _TRANSFORMS[transform_name]
+        transform = transforms.TRANSFORMS[transform_name]
         if subtransform_name:
             transform = transform[subtransform_name]
         result = str(transform(input_data))
@@ -69,7 +36,7 @@ class PuzzTools(kp.Plugin):
             # User is in a nested transform menu, list all subtransforms
             suggestions = []
             transform_name = item.target()
-            for subtransform_name in _TRANSFORMS[transform_name]:
+            for subtransform_name in transforms.TRANSFORMS[transform_name]:
                 suggestions.append(
                     self.create_item(
                         category=self.DIRECT,
@@ -82,7 +49,7 @@ class PuzzTools(kp.Plugin):
             self.set_suggestions(suggestions)
 
     def _build_catalog(self):
-        for transform_name, transform in _TRANSFORMS.items():
+        for transform_name, transform in transforms.TRANSFORMS.items():
             if isinstance(transform, dict):  # Nested transforms
                 category, args_hint = self.NESTED, kp.ItemArgsHint.REQUIRED
             else:

@@ -49,3 +49,5 @@ Optionally, you can pass a custom input to the transform by pressing TAB on the 
 - 1.0: Initial release
 - 1.1: Added transpose transform
 - 1.2: Allow user to pass custom input to transforms
+- 1.3: Added snake_case and kebab-case transforms
+- 1.4: Moved to a new file, refactored grid transforms and added rotate
